@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengingat Diri - Edukasi Islah</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #e8f5e9; /* Hijau soft khas Islami */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid #c8e6c9;
+        }
+
+        .sticker-header {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: pulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        h2 {
+            color: #1b5e20;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        p.question {
+            color: #388e3c;
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pacaran {
+            background-color: #e57373;
+            color: white;
+        }
+
+        .btn-pacaran:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .btn-single {
+            background-color: #81c784;
+            color: white;
+        }
+
+        .btn-single:hover {
+            background-color: #2e7d32;
+            transform: translateY(-2px);
+        }
+
+        .content-box {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .box-pacaran {
+            background-color: #fff3e0;
+            border: 1px dashed #fb8c00;
+            color: #e65100;
+        }
+
+        .box-single {
+            background-color: #f1f8e9;
+            border: 1px dashed #7cb342;
+            color: #33691e;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', 'Traditional Arabic', serif;
+            font-size: 20px;
+            direction: rtl;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #1b5e20;
+        }
+
+        .translation {
+            font-size: 14px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .audio-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .wave-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Stiker Islami Header -->
+        <div class="sticker-header">🕌 📖 ✨</div>
+        <h2>Pengingat Diri</h2>
+        <p class="question">Bagaimana statusmu saat ini?</p>
+
+        <!-- Pilihan Tombol Status -->
+        <div class="btn-group">
+            <button class="btn-pacaran" onclick="showPacaran()">Pacaran ⚠️</button>
+            <button class="btn-single" onclick="showSingle()">Single 🌸</button>
+        </div>
+
+        <!-- Tampilan Jika Memilih Pacaran -->
+        <div class="content-box box-pacaran" id="pacaran-box">
+            <div class="sticker-header" style="font-size: 32px;">🛑</div>
+            <p class="arabic-text">وَلَا تَقْرَبُوا الزِّنٰىٓ اِنَّهٗ كَانَ فَاحِشَةً وَسَاۤءَ سَبِيْلًا</p>
+            <p class="translation">
+                "Dan janganlah kamu mendekati zina; sesungguhnya zina itu adalah suatu perbuatan yang keji dan suatu jalan yang buruk."<br>
+                <strong>(QS. Al-Isra': 32)</strong>
+            </p>
+        </div>
+
+        <!-- Tampilan Jika Memilih Single -->
+        <div class="content-box box-single" id="single-box">
+            <div class="sticker-header" style="font-size: 32px;">🌿</div>
+            <p style="font-size: 15px; font-weight: bold; margin-bottom: 8px;">MasyaAllah, Tetap Menjaga Diri!</p>
+            <p class="translation">"Barangsiapa yang meninggalkan sesuatu karena Allah, maka Allah akan menggantinya dengan yang lebih baik." (HR. Ahmad)</p>
+            
+            <div class="audio-indicator" id="audio-status">
+                <div class="wave-dot"></div>
+                <span>Memutar Audio Operator Suara Tenang...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let audioSynth = window.speechSynthesis;
+
+        function stopAudio() {
+            if (audioSynth.speaking) {
+                audioSynth.cancel();
+            }
+        }
+
+        function showPacaran() {
+            stopAudio();
+            document.getElementById('single-box').style.display = 'none';
+            document.getElementById('pacaran-box').style.display = 'block';
+        }
+
+        function showSingle() {
+            document.getElementById('pacaran-box').style.display = 'none';
+            document.getElementById('single-box').style.display = 'block';
+
+            stopAudio();
+
+            // Menggunakan Web Speech API untuk menghasilkan suara tenang tanpa perlu file external .mp3
+            const textToSpeak = "MasyaAllah. Tetaplah bersabar dan menjaga kebersihan hati. Semoga Allah karuniakan jodoh yang terbaik pada waktu yang tepat.";
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = 'id-ID';
+            utterance.rate = 0.85; // Tempo lebih lambat agar terdengar tenang
+            utterance.pitch = 0.95; // Nada suara seimbang
+
+            audioSynth.speak(utterance);
+        }
+    </script>
+</body>
+</html>
